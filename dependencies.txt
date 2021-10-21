@@ -1,0 +1,5 @@
+express
+@ceramicnetwork/http-client
+key-did-resolver
+key-did-provider-ed25519
+dids
