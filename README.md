@@ -1,5 +1,6 @@
 # Cambria/Ceramic Interoperability PoC
 ## Introduction
+
 A network is a group of computers connected by cables, electromagnetic waves, or any other medium that is able to propagate binary information. Since its beginnings, a common problem in networking was to make sure computers were able to understand each other, which gave birth to a myriad of protocols for data communication.
 
 Nowadays, it is still a problem to guarantee backward and forward compatibility between different versions of the same software. If a piece of software receives some data (in the form of a JSON string, for example) that it cannot handle, even if it is coming from an older or newer version of itself, it will crash and be rendered useless. Ideally, things like up-to-date servers dealing with outdated clients, and up-to-date clients dealing with outdated should servers still be able to communicate in a technologically diversified world as ours.
@@ -14,3 +15,17 @@ In the example video below, I loaded two JSON Tile Documents from the network. O
 
 https://youtu.be/uGcdV7w4r6s
 
+## Running the demo application
+
+The demo application is basically a node.js web server that serves a simple HTML page and the necessary images and scripts. The page uses the fetch function, an address to a ceramic gateway, and the Cambria library for its main functionality, and all the javascript files needed to be bundled with browserify to reliably run in the browser environment. You can accomplish it simply by moving into the javascript directory and typing
+```
+npx browserify main.or.mjs -o main.js
+```
+assuming, of course, that you have installed browserify with npm.
+You can interact with the demo with the stream ids in /resources/ids.txt, but both the data for the input streams and the streams storing the lenses can be modified by running setup.mjs as is or with the appropriate modifications. Before that, make sure to install all the packages in /resources/dependencies.txt.
+
+After everything is set up, start the server with
+```
+node http_server.js
+```
+and point your browser to http://localhost:5555/ui/ui.html.
